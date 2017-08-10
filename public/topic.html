@@ -1,0 +1,19 @@
+
+
+  <div class="topicTitle">{{ topic.title }} </div>
+  <div class="topicDate">{{ topic.postedDate | date }} </div>
+  <div class="topicAuthor">By: {{ topic.topicPostedBy }} </div>
+  <br>
+  <br>
+
+  <div ng-repeat="message in topic.messages">
+    <div class="messageContainer">
+      <div class="messageDetails">
+        <div class="messageAuthor">{{ message.msgPostedBy }}</div>
+        <div class="postedOn">{{ message.postedDate | date }}</div>
+      </div>
+      <div class="msgBody">{{ message.body }}</div>
+      <br>
+      <br>
+    </div>
+  </div>

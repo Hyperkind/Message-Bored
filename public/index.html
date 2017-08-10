@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title LOL</title>
+  <base href="/">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body ng-app="myApp">
+  <h1>HEADER</h1>
+  <a href="/newTopic">Add Topic</a>
+  <ul></ul>
+  <!-- how do I make a nav element - inser that into every view?? -->
+  <!-- this would be for all the topics -->
+  <div class="viewContainer" ng-view></div>
+  <h1>FOOTER</h1>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/controllers/home.controller.js"></script>
+  <script src="/scripts/controllers/users.controller.js"></script>
+  <script src="/scripts/controllers/user.controller.js"></script>
+  <script src="/scripts/controllers/topic.controller.js"></script>
+  <script src="/scripts/controllers/register.controller.js"></script>
+  <script src="/scripts/controllers/login.controller.js"></script>
+  <script src="/scripts/controllers/latest.messages.controller.js"></script>
+  <script src="/scripts/services.js"></script>
+</body>
+</html>
+

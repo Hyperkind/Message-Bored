@@ -1,0 +1,41 @@
+
+
+  <img src="https://springfieldohio.gov/wp-content/uploads/2015/09/person-placeholder-.jpg" height="70px">
+  <div class="userDetailsContainer">
+    <div class="username">{{ user.username }}</div>
+    <div class="joined">Joined: {{ user.joined | date }}</div>
+  </div>
+  <br>
+  <br>
+
+  <div class="test" ng-repeat="message in user.messages">
+    <div class="messageContainer">
+      <div class="topicTitle">{{ message.topic }}</div>
+      <!-- Topics.name -->
+      <div class="msgBody">{{ message.body }}</div>
+      <!-- Messages.body -->
+      <div class="postedOn">{{ message.createdAt | date }}</div>
+      <!-- Messages.createdAt -->
+
+      <br>
+      <br>
+    </div>
+  </div>
+
+<!--   <div class="topicTitle">Topic: Here is My Pug</div>
+  <div class="msgBody">Blah blah blah blah blah blah blah blah blah blah blah blah</div>
+  <div class="postedOn">Posted on: 01/02/2015</div>
+
+  <br>
+  <br>
+
+  <div class="topicTitle">Topic: Here is My Pug</div>
+  <div class="msgBody">Blah blah blah blah blah blah blah blah blah blah blah blah</div>
+  <div class="postedOn">Posted on: 01/02/2015</div>
+
+  <br>
+  <br>
+
+  <div class="topicTitle">Topic: Here is My Pug</div>
+  <div class="msgBody">Blah blah blah blah blah blah blah blah blah blah blah blah</div>
+  <div class="postedOn">Posted on: 01/02/2015</div> -->

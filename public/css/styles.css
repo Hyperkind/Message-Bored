@@ -1,0 +1,17 @@
+.viewContainer {
+  background-color: yellow;
+}
+
+.userDetailsContainer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.messageDetails {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.postedOn {
+  margin-left: 10px;
+}

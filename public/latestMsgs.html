@@ -1,0 +1,11 @@
+
+  <div ng-repeat="message in messages">
+    <div class="messageContainer">
+      <div class="topicTitle">{{ message.title }}</div>
+      <div class="messageAuthor">{{ message.msgPostedBy }}</div>
+      <div class="postedOn">{{ message.postedDate | date }}</div>
+      <div class="msgBody">{{ message.body }}</div>
+      <br>
+      <br>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+
+
+<div class="container" ng-repeat="user in users">
+  <div class="userContainer">
+  <a href="/users/{{user.id}}">
+    <img class="userImage" src="https://springfieldohio.gov/wp-content/uploads/2015/09/person-placeholder-.jpg" height="70px">
+  </a>
+  <div class="userDetailsContainer">
+    <div class="username">
+      <a href="/users/{{user.id}}"> {{user.username}}</a>
+    </div>
+    <div class="joined">Joined: {{user.createdAt | date}}</div>
+  </div>
+  <br>
+  <br>
+  </div>
+</div>
+
