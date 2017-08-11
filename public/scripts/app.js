@@ -41,6 +41,10 @@ myApp
     templateUrl: 'login.html',
     controller: 'LoginController'
   })
+  .when('/newTopic', {
+    templateUrl: 'newTopic.html',
+    controller: 'NewTopicController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode(true);

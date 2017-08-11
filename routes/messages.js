@@ -13,8 +13,24 @@ const Messages = db.Messages;
 
 // });
 
-router.get('/latest', (req, res) => {
+router.get('/', (req, res) => {
   //posts most recent 10 messages with topic, date created, and name of author
+  return Messages.findAll({include: [Users, Topics], order: [['createdAt', 'DESC']]})
+  .then(messages => {
+    let formattedMsgs =[];
+    messages.forEach(message => {
+      let msg = {
+        msgId: message.id,
+        title: message.Topic.name,
+        body: message.body,
+        postedDate: message.createdAt,
+        msgPostedBy: message.User.username
+      };
+      return formattedMsgs.push(msg);
+    });
+
+    return res.json(formattedMsgs);
+  })
 
 });
 

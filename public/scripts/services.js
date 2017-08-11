@@ -65,12 +65,21 @@ angular.module('myApp')
     });
   }
 
+  addTopic = function(newTopic){
+    return $http.post('/api/topics/', newTopic)
+    .then(newTopic => {
+      return newTopic.data;
+    });
+  }
+
   return {
     getTopics: getTopics,
     getTopic: getTopic,
+    addTopic: addTopic
   }
 }])
 .service('MessagesService', ['$http', function($http){
+
   getMessages = function(){
     return $http.get('/api/messages')
     .then(messages => {
@@ -78,7 +87,15 @@ angular.module('myApp')
     });
   }
 
+  addMessage = function(message){
+    return $http.post('/api/messages', message)
+    .then(newMessage => {
+      return newMessage.data;
+    })
+  }
+
   return {
-    getMessages: getMessages
+    getMessages: getMessages,
+    addMessage: addMessage
   }
 }]);

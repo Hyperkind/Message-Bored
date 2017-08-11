@@ -11,10 +11,10 @@ angular.module('myApp')
       console.log('came back to controller from loginUser method', user);
       if(!user) {$scope.feedback = 'Not a valid user'}
       else {
-        $rootScope.loggedInUserId = user.id;
+        localStorage.loggedInUserId = user.id;
         $window.location.href='/users';
       }
-    console.log('this is the user id', $rootScope.loggedInUserId);
+
     });
 
 

@@ -4,15 +4,34 @@
   <div class="topicDate">{{ topic.postedDate | date }} </div>
   <div class="topicAuthor">By: {{ topic.topicPostedBy }} </div>
   <br>
+  <input type="text" ng-model="commentBox">
+  <button ng-click="addComment()">Comment</button>
+  <br>
   <br>
 
-  <div ng-repeat="message in topic.messages">
+
+  <div ng-repeat="message in topic.messages track by $index">
     <div class="messageContainer">
       <div class="messageDetails">
+
         <div class="messageAuthor">{{ message.msgPostedBy }}</div>
+
         <div class="postedOn">{{ message.postedDate | date }}</div>
+
+        <button ng-if="message.editable && !message.editOn" class="editCommentBtn" ng-click="editComment($index)">Edit</button>
+
+        <button ng-if="message.editable && !message.editOn" class="deleteCommentBtn" ng-click=" deleteComment()">Delete</button>
+
       </div>
-      <div class="msgBody">{{ message.body }}</div>
+
+      <div ng-if="!message.editOn" class="msgBody">{{ message.body }}</div>
+
+      <input type="text" ng-if="message.editOn" value="{{message.body}}">
+
+      <button ng-if="message.editOn" ng-click="saveEdit($index)">Save</button>
+
+      <button ng-if="message.editOn" ng-click="cancelEdit($index)">Cancel</button>
+
       <br>
       <br>
     </div>

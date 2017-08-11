@@ -22,6 +22,29 @@ router.get('/', (req, res) => {
 });
 
 
+router.get('/login/:username', (req, res) => {
+  console.log('get to login/:username running');
+  let targetUsername = req.params.username;
+  let ourUser = {};
+  //this gets the user with id from the database
+  //displays the user's name, when they joined (created_at), a list of all their messages sorted by createdAt - each message shows which topic it was posted on and created date of message
+
+  //find user by Id, get name, created_at
+  //find messages by user Id (author_id), include topic.name, - post body and created_at
+
+  return Users.findOne({where: {username: targetUsername}})
+  .then(user => {
+    if (!user) {res.send ('Not a valid user.'); }
+    // res.json(user);
+    ourUser.username = user.username;
+    ourUser.id = user.id;
+    ourUser.joined = user.createdAt;
+    return res.json(ourUser);
+  });
+
+});
+
+
 router.get('/:id', (req, res) => {
   let targetId = req.params.id;
   let ourUser = {};
@@ -52,7 +75,7 @@ router.get('/:id', (req, res) => {
       return ourUser.messages.push(msg);
     });
 
-    console.log('THE MESSAGES OF OUR USER', ourUser.messages);
+    console.log('THE USER OBJECT WE ARE SENDING BACK', ourUser);
     return res.json(ourUser);
   })
 
@@ -60,6 +83,7 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
+  console.log('this is what we are receiving on POST', req);
   let {username} = req.body;
 
   return Users.create({username})

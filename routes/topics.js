@@ -42,7 +42,8 @@ router.get('/:id', (req, res) => {
         msgId: message.id,
         body: message.body,
         postedDate: message.createdAt,
-        msgPostedBy: message.User.username
+        msgPostedBy: message.User.username,
+        msgAuthorId: message.User.id
       };
       return ourTopic.messages.push(msg);
     });

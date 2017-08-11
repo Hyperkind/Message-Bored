@@ -9,7 +9,9 @@
 <body ng-app="myApp">
   <h1>HEADER</h1>
   <a href="/newTopic">Add Topic</a>
-  <ul></ul>
+  <button ng-controller="LogoutController" ng-click="logout()">Log Out</button>
+  <br>
+  <br>
   <!-- how do I make a nav element - inser that into every view?? -->
   <!-- this would be for all the topics -->
   <div class="viewContainer" ng-view></div>
@@ -24,7 +26,9 @@
   <script src="/scripts/controllers/topic.controller.js"></script>
   <script src="/scripts/controllers/register.controller.js"></script>
   <script src="/scripts/controllers/login.controller.js"></script>
+  <script src="/scripts/controllers/logout.controller.js"></script>
   <script src="/scripts/controllers/latest.messages.controller.js"></script>
+  <script src="/scripts/controllers/new.topic.controller.js"></script>
   <script src="/scripts/services.js"></script>
 </body>
 </html>
