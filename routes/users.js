@@ -70,7 +70,8 @@ router.get('/:id', (req, res) => {
       let msg = {
         body: message.body,
         createdAt: message.createdAt,
-        topic: message.Topic.name
+        topicName: message.Topic.name,
+        topicId: message.Topic.id
       };
       return ourUser.messages.push(msg);
     });

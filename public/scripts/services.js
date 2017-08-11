@@ -91,11 +91,31 @@ angular.module('myApp')
     return $http.post('/api/messages', message)
     .then(newMessage => {
       return newMessage.data;
+    });
+  }
+
+  updateMessage = function(id, editedMessage){
+    console.log('running the updateMessage method');
+    return $http.put(`/api/messages/${id}`, editedMessage)
+    .then(updatedMessage => {
+      console.log('WHAT updateMessage method on service receives back from db', updatedMessage);
+      return updatedMessage.data;
+    });
+  }
+
+  deleteMessage = function(id) {
+    console.log('running the delete message method on service');
+    return $http.delete(`/api/messages/${id}`)
+    .then(ripMessage => {
+      console.log('what comes back to service on delete', ripMessage.data);
+      return ripMessage.data;
     })
   }
 
   return {
     getMessages: getMessages,
-    addMessage: addMessage
+    addMessage: addMessage,
+    updateMessage: updateMessage,
+    deleteMessage: deleteMessage
   }
 }]);

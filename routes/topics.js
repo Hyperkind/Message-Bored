@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
     ourTopic.title = topic.name;
     ourTopic.postedDate = topic.createdAt;
     ourTopic.topicPostedBy = topic.User.username;
+    ourTopic.topicAuthorId = topic.User.id;
 
     return Messages.findAll({where: {topic_id: topic.id}, include: [Users], order: [['createdAt', 'ASC']]})
   })

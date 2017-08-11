@@ -31,6 +31,7 @@ angular.module('myApp')
       .then(newComment => {
         console.log('coming back from the server', newComment);
         loadTopic(topicId);
+        $scope.commentBox = '';
       });
 
     }
@@ -39,21 +40,38 @@ angular.module('myApp')
       console.log('our param', index);
       console.log($scope.topic.messages[index]);
       $scope.topic.messages[index].editOn = true;
-        //Turn the comment into input
-        //Save button appears
-        //input has value of old comment
-        //save button has its own functionality\
-        //cancel button appears and has its own func
+      $scope.topic.messages[index].newMsgBody = $scope.topic.messages[index].body;
     }
 
     $scope.cancelEdit = function(index){
       $scope.topic.messages[index].editOn = false;
     }
 
-    $scope.saveEdit = function(){
+    $scope.saveEdit = function(index){
       //on save, we want to do a put to that message
       //we need to pass in the id so we can locate the record
       //the only other thing we're passing in to update is the body of the message
+      let targetId = $scope.topic.messages[index].msgId;
+      let editedMessage = {
+        body: $scope.topic.messages[index].newMsgBody
+      }
+      console.log('this is what were sending from the controller to the service', editedMessage);
+      MessagesService.updateMessage(targetId, editedMessage)
+      .then(updatedMessage => {
+        console.log('this is what comes back to our controller', updatedMessage);
+        $scope.topic.messages[index].body = updatedMessage.body;
+        $scope.topic.messages[index].editOn = false;
+      });
+    }
+
+    $scope.deleteComment = function(index){
+      let targetId = $scope.topic.messages[index].msgId;
+
+      MessagesService.deleteMessage(targetId)
+      .then(ripMessage => {
+        console.log('this is coming back to controller on delete', ripMessage);
+        loadTopic(topicId);
+      })
     }
 
 }])

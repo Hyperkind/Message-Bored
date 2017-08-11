@@ -50,4 +50,28 @@ router.post('/', (req, res) => {
   })
 });
 
+router.put('/:id', (req, res) => {
+  console.log('put on messages is being hit');
+  let targetId = req.params.id;
+  return Messages.findById(targetId)
+  .then(message => {
+    return message.update({body: req.body.body});
+  })
+  .then(updatedMessage => {
+    console.log('this is what the update method returns in sequelize', updatedMessage);
+    return res.json(updatedMessage);
+  })
+});
+
+router.delete('/:id', (req, res) => {
+  console.log('delete route is firing!');
+  let targetId = req.params.id;
+
+  return Messages.destroy({where: {id: targetId}})
+  .then(ripMessage => {
+    console.log('this is what we get back from delete sequelize', ripMessage);
+    return res.json(ripMessage);
+  })
+})
+
 module.exports = router;

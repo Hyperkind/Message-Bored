@@ -10,7 +10,7 @@
 
   <div class="test" ng-repeat="message in user.messages">
     <div class="messageContainer">
-      <div class="topicTitle">{{ message.topic }}</div>
+      <a href="/topics/{{message.topicId}}"><div class="topicTitle">{{ message.topicName }}</div></a>
       <!-- Topics.name -->
       <div class="msgBody">{{ message.body }}</div>
       <!-- Messages.body -->
