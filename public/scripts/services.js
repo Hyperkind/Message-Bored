@@ -1,3 +1,4 @@
+
 //do all our services go in this file???
 
 angular.module('myApp')
@@ -19,34 +20,43 @@ angular.module('myApp')
   }
 
   addUser = function(user){
-    console.log('running addUser function');
+    console.log('running addUser method in service');
     console.log('this is the object we are sending to POST', user);
-    return $http.post('/api/users', user)
+    return $http.post('/register', user)
     .then(user => {
-      console.log('THIS IS THE USER THAT COMES BACK ON POST', user);
+      console.log('THIS IS THE USER THAT COMES BACK ON POST to register', user.data);
       return user.data;
     })
   }
 
-  loginUser = function(username){
+  loginUser = function(user){
     console.log('loginUser method on service running');
-    return $http.get(`/api/users/login/${username}`)
+    return $http.post('/login', user)
     .then(user => {
-      console.log('USER.DATA BACK FROM GET /:username', user.data);
-      console.log('type of user', (typeof user.data));
-      if (typeof user.data !== 'object'){
-        return null;
-      }
+      console.log('USER.DATA BACK FROM POST TO /LOGIN', user.data);
+
+    //   if (typeof user.data !== 'object'){
+    //     return null;
+    //   }
       return user.data;
     })
+  }
 
+  logoutUser = function(){
+    console.log('logoutUser method running');
+    return $http.get('/logout')
+    .then(result => {
+      console.log('inside UserService returning from logout', result.data);
+      return result.data;
+    });
   }
 
   return {
     getUsers: getUsers,
     getUser: getUser,
     addUser: addUser,
-    loginUser: loginUser
+    loginUser: loginUser,
+    logoutUser: logoutUser
   }
 
 }])

@@ -83,15 +83,15 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
-  console.log('this is what we are receiving on POST', req);
-  let {username} = req.body;
+// router.post('/', (req, res) => {
+//   console.log('this is what we are receiving on POST', req);
+//   let {username} = req.body;
 
-  return Users.create({username})
-  .then(createdUser => {
-    res.send(createdUser);
-  });
+//   return Users.create({username})
+//   .then(createdUser => {
+//     res.send(createdUser);
+//   });
 
-});
+// });
 
 module.exports = router;

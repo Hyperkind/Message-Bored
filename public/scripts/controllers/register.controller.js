@@ -1,20 +1,22 @@
 angular.module('myApp')
 .controller('RegisterController', ['$scope', 'UsersService', function($scope, UsersService){
 
-  $scope.newUser = {
-    username: ''};
+  $scope.user = {
+    username: '',
+    password: ''
+  };
+
+  $scope.successMsg = '';
 
   $scope.addUser = function () {
-    let ourNewUser = {
-      username: $scope.newUser.username
-    };
 
-    console.log('OUR NEW USER', ourNewUser);
+    console.log('this is the user we are sending from controller', $scope.user);
 
-    UsersService.addUser(ourNewUser)
+    UsersService.addUser($scope.user)
     .then(user => {
       console.log('came back to controller', user);
-      $scope.newUser.username = '';
+      $scope.user.username = '';
+      $scope.user.password = '';
       $scope.successMsg = 'Registered!';
     });
 
