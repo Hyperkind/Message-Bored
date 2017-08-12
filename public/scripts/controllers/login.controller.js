@@ -20,6 +20,7 @@ angular.module('myApp')
       if(!user) {$scope.feedback = 'Not a valid user'}
       else {
         localStorage.loggedInUserId = user.id;
+        localStorage.loggedIn = true;
         $window.location.href='/users/' + user.id;
       }
 

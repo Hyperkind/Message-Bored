@@ -7,12 +7,34 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body ng-app="myApp">
-  <h1>HEADER</h1>
-  <a href="/newTopic">Add Topic</a>
-  <button ng-controller="LogoutController" ng-click="logout()">Log Out</button>
-  <a href="/login">Log In</a>
-  <a href="/register">Register</a>
-  <a href="/users">Users</a>
+  <div class="navHoverArea">
+    <div class="nav" ng-controller="NavMenuController">
+      <div class="leftNav">
+        <div class="topicsNav navElements">Topics
+          <div class="topicsMenu">
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+  </div>
+        </div>
+        <a href="/latest" class="navA navElements">Latest</a>
+        <a href="/users" class="navA navElements">Users</a>
+      </div>
+      <div class="rightNav">
+        <div ng-if="loggedIn" class="loggedInRightNav">
+          <a href="/newTopic" class="navA navElements">Add Topic</a>
+          <button class="navBtn navElements" ng-controller="LogoutController" ng-click="logout()">Log Out</button>
+        </div>
+        <div ng-if="!loggedIn" class="loggedOutRightNav">
+          <a href="/login" class="navA navElements">Log In</a>
+          <a href="/register" class="navA navElements">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <br>
@@ -32,6 +54,7 @@
   <script src="/scripts/controllers/register.controller.js"></script>
   <script src="/scripts/controllers/login.controller.js"></script>
   <script src="/scripts/controllers/logout.controller.js"></script>
+  <script src="/scripts/controllers/nav.controller.js"></script>
   <script src="/scripts/controllers/latest.messages.controller.js"></script>
   <script src="/scripts/controllers/new.topic.controller.js"></script>
   <script src="/scripts/services.js"></script>

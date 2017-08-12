@@ -6,6 +6,7 @@ angular.module('myApp')
     .then(result => {
       console.log('coming back from controller', result);
       localStorage.loggedInUserId = null;
+      localStorage.loggedIn = false;
 
       console.log('logging out', localStorage.loggedInUserId);
 
